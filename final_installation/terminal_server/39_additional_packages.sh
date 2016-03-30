@@ -34,9 +34,9 @@ wget -O - http://download.videolan.org/pub/debian/videolan-apt.asc|sudo apt-key 
 
 sudo apt-get update
 
-sudo apt-get upgrade
+sudo apt-get --assume-yes upgrade
 
-sudo apt-get dist-upgrade
+sudo apt-get --assume-yes dist-upgrade
 
 PACKAGES=$(cat additional.packages.list | grep -v "^#")
 
