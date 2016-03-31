@@ -43,7 +43,7 @@ do
 done
 
 # list the agent versions in reverse order sorted by version numbers
-my AGENT_2_INSTALL=$(find agents -name "*.deb" | sort -V -r)
+AGENT_2_INSTALL=$(find agents -name "*.deb" | sort -V -r)
 
 # and install the agent finally
 sudo dpkg -i "$AGENT_2_INSTALL"
