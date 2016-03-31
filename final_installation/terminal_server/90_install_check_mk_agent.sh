@@ -10,6 +10,7 @@ echo 'deb http://labs.consol.de/repo/stable/ubuntu trusty main' | sudo tee /etc/
 sudo apt-get update
 
 # create a directory in the temporary folder
+CURR_DIR="$PWD"
 MYTEMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir')
 
 cd "$MYTEMPDIR"
@@ -51,4 +52,4 @@ AGENT_2_INSTALL=$(find agents -name "*.deb" | sort -V -r)
 sudo dpkg -i "$AGENT_2_INSTALL"
 
 # and remove the temporary folders
-cd ~ && rm -rf "$MYTEMPDIR"
+cd "$CURR_DIR" && rm -rf "$MYTEMPDIR"
