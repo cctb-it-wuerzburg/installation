@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## install xinetd
+apt-get install --assume-yes xinetd
+
+## get the latest version of check_mk
+
+wget -O /tmp/check_mk.deb 'http://mathias-kettner.de/download/'$(wget --quiet -O - http://mathias-kettner.de/download/ | grep -Po 'href=".+?"' | sed 's/href="//g' | tr -d '"' | grep "check[-_]mk-agent" | grep "_all.deb" | sort -V | tail -1)
+
+dpkg --install /tmp/check_mk.deb
+
+rm /tmp/check_mk.deb
