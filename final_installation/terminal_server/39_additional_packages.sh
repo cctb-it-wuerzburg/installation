@@ -26,6 +26,10 @@ sudo add-apt-repository -y ppa:gnome3-team/gnome3
 
 sudo add-apt-repository -y ppa:webupd8team/java
 
+# Accepting the JAVA license per default
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+
 sudo add-apt-repository -y ppa:webupd8team/y-ppa-manager
 
 echo 'deb http://download.videolan.org/pub/debian/stable/ /' | sudo tee /etc/apt/sources.list.d/libdvdcss.list &&
