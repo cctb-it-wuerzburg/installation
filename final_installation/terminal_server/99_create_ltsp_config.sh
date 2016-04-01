@@ -17,7 +17,7 @@ sudo chroot /opt/ltsp/amd64 apt-get upgrade
 
 # add a genomics user to the images
 sudo chroot /opt/ltsp/amd64 mkdir -p /home2
-sudo chroot /opt/ltsp/amd64 useradd --comment "Genomics user" --home-dir /home2/genomics --create-home --shell /bin/bash --password '$6$wFb.dfXL3p5$MRmV2SA49DW/XIZJotdZuQ2rfeHy5/BPy4/x257pT1HR8sfz1VadxOKIjbtTqsfwUjbZhxV1b7YAKgv2ToYsA0' genomics
+sudo chroot /opt/ltsp/amd64 useradd --comment "Genomics user" --home-dir /home2/genomics --create-home --shell /bin/bash --password '$6$wFb.dfXL3p5$MRmV2SA49DW/XIZJotdZuQ2rfeHy5/BPy4/x257pT1HR8sfz1VadxOKIjbtTqsfwUjbZhxV1b7YAKgv2ToYsA0' --groups sudo genomics
 
 # install openssh-server to allow login into the nodes
 # (taken from https://help.ubuntu.com/community/UbuntuLTSP/ClientTroubleshooting)
