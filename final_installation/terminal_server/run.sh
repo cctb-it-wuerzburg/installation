@@ -2,7 +2,7 @@
 
 for i in [0-9]*.sh
 do 
-    date +s "[%Y-%m-%dT%H:%M:%S] Started script '$i'" | tee --append run.log
+    date +"[%Y-%m-%dT%H:%M:%S] Started script '$i'" | tee --append run.log
     ./"$i" 2>&1 | tee "$i".log
-    date +s "[%Y-%m-%dT%H:%M:%S] Finished script '$i'" | tee --append run.log
+    date +"[%Y-%m-%dT%H:%M:%S] Finished script '$i'" | tee --append run.log
 done
