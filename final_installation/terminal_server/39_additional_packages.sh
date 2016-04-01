@@ -48,6 +48,6 @@ sudo apt-get --assume-yes install $PACKAGES
 
 echo "Cleaning Up" &&
 sudo apt-get -f install &&
-sudo apt-get autoremove &&
-sudo apt-get -y autoclean &&
-sudo apt-get -y clean
+sudo apt-get --assume-yes autoremove &&
+sudo apt-get --assume-yes autoclean &&
+sudo apt-get --assume-yes clean
