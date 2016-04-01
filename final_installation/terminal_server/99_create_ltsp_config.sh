@@ -6,7 +6,10 @@
 # chmod instruction obtained from
 # https://www.thefanclub.co.za/how-to/configure-update-auto-login-ubuntu-12-04-ltsp-fat-clients
 
-sudo ltsp-build-client
+# get the current IP address
+IP_ADDRESS=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
+
+sudo ltsp-build-client --arch amd64
 sudo sed -i 's/ipappend 2/ipappend 3/g' /var/lib/tftpboot/ltsp/amd64/pxelinux.cfg/default
 
 sudo chroot /opt/ltsp/amd64 apt-get update
@@ -30,14 +33,14 @@ sudo sed -i '/^etc\/ssh\/ssh_host_*_key/d' /etc/ltsp/ltsp-update-image.excludes
 sudo chroot /opt/ltsp/amd64 apt-get purge --assume-yes light-locker light-locker-settings
 
 # Set a lts.conf file to enable the correct SERVER and DHCP on the clients
-cat > /var/lib/tftpboot/ltsp/amd64/lts.conf <<EOF
+cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/amd64/lts.conf
 [Default]
 # For troubleshooting, the following open a local console with Alt+Ctrl+F2.
 SCREEN_02=shell
 SCREEN_07=ldm
 
 LDM_SYSLOG=True
-SERVER=132.187.22.162
+SERVER=${IP_ADDRESS}
 NETWORK_COMPRESSION=True
 
 # this is the important line to enable DHCP on the client machines
