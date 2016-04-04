@@ -1,0 +1,67 @@
+## Shells
+bash
+tcsh
+zsh
+
+
+## clusterssh/ssh
+openssh-server
+clusterssh
+sshfs
+
+## Tools
+screen
+pigz
+pbzip2
+finger
+pv
+a2ps
+tree
+htop
+tofrodos
+
+## Time
+ntp
+
+## Git
+git
+gitk
+git-svn
+
+## diff-tool
+meld
+
+## subversion
+subversion
+subversion-tools
+
+## Development
+build-essential
+
+# Bash debugger
+bashdb
+
+## Perl
+libdatetime-format-builder-perl
+libdatetime-format-duration-perl
+libdatetime-format-natural-perl
+libdatetime-format-strptime-perl
+libdatetime-locale-perl
+libdatetime-perl
+libdatetime-timezone-perl
+libdbd-mysql-perl
+libdbd-pg-perl
+libdbd-sqlite3-perl
+libdevel-cover-perl
+libdevel-nytprof-perl
+libdevel-ptkdb-perl
+libdevel-refactor-perl
+liblog-log4perl-perl
+libnet-ssh-perl
+libterm-progressbar-perl
+libtest-deep-perl
+libtest-harness-perl
+libtest-pod-coverage-perl
+libtest-script-perl
+libtest-simple-perl
+libtest-strict-perl
