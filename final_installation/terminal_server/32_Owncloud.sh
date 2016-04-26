@@ -11,6 +11,7 @@ then
   sudo apt-get install --assume-yes owncloud-client owncloud-client-cmd owncloud-client-doc owncloud-client-l10n
 else
   # Owncloud installation for older Ubuntu releases
+  echo "Installation from opensuse repository"
   wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_14.04/Release.key | sudo apt-key add -
 
   sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_14.04/ /' > /etc/apt/sources.list.d/owncloud-client.list"
