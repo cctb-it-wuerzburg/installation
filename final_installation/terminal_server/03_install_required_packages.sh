@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt-get install --assume-yes xubuntu-desktop ltsp-server tftpd-hpa
+sudo apt-get install --assume-yes xubuntu-desktop ltsp-server tftpd-hpa ldm-server

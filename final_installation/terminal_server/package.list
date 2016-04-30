@@ -83,6 +83,7 @@ figtree
 ncbi-blast+
 bowtie
 bowtie2
+raxml
 
 ## Lua development needed for clann
 liblua5.1-0-dev
