@@ -18,3 +18,9 @@ apt install --yes --force-yes figtree
 
 #ea-utils
 apt install --assume-yes --no-install-recommends ea-utils
+
+# install optional software (SeqFilter/usearch) via special package
+cd /tmp
+git clone git@132.187.22.105:alex-summerschool-2016/opt-software
+cd opt-software
+dpkg -i summerschool-opt-software_1.0.0_amd64.deb
