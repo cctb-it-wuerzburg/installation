@@ -16,3 +16,5 @@ pip install qiime
 #figtree
 apt install --yes --force-yes figtree
 
+#ea-utils
+apt install --assume-yes --no-install-recommends ea-utils
