@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# install vegan and ape via cran-repository
+for i in r-cran-vegan r-cran-ape
+do
+  apt install --assume-yes "$i"
+done
+
 #R packages
 Rscript install_packages.R
 #fastQC, seaview
