@@ -1,3 +1,4 @@
+#!/bin/bash
 groupadd students
 useradd --comment 'Michael Fizdale' --password '$6$IVXJlR4DgJ8z7$uGjVJ9s7r.69iv.KQu400JwzGP4PC19y1LMXioEMHG6Qj8onSy20WBiB680GWORhZWOeuHmUkAfNiq3UZo/v70' --home-dir /home/micfiz --create-home --shell /bin/bash -g students micfiz
 useradd --comment 'Rachael Bonoan' --password '$6$xsqS4OXlhtV0LD$X9CnvhjoT.1PB2QocyPKHJeNhzMCQpEVIRegYuVwmwpFXzr/S2pjyN4I7v9Pa3edtIt23yD8ToRfb60216zuu1' --home-dir /home/racbon --create-home --shell /bin/bash -g students racbon
