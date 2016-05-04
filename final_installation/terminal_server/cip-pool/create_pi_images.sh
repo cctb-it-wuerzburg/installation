@@ -10,3 +10,10 @@ EXTRA_MIRROR="http://ppa.launchpad.net/ts.sch.gr/ppa/ubuntu $DIST main"
 KERNEL_ARCH="raspi2"
 LATE_PACKAGES="dosfstools less nano"
 EOF
+
+add-apt-repository --yes ppa:ts.sch.gr
+apt-key export 03AFA832 > /etc/ltsp/ts_sch_gr-ppa.key
+apt-get update
+apt-get --assume-yes dist-upgrade
+apt-get --assume-yes install qemu-user-static binfmt-support
+ltsp-build-client --arch armhf --config /etc/ltsp/ltsp-build-client-raspi3.conf
