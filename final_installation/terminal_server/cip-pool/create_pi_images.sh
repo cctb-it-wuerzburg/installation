@@ -17,3 +17,21 @@ apt-get update
 apt-get --assume-yes dist-upgrade
 apt-get --assume-yes install qemu-user-static binfmt-support
 ltsp-build-client --arch armhf --config /etc/ltsp/ltsp-build-client-raspi3.conf
+
+# enter image and add important packages
+ltsp-chroot -ma armhf
+
+export FLASH_KERNEL_SKIP=true
+# Install the desktop environment you prefer.
+# This is for the lubuntu-desktop task:
+apt-get install --no-install-recommends xubuntu-desktop^
+# This is for the gnome-flashback session:
+#apt-get install ubuntu-desktop gnome-session-flashback
+
+# Install any additional software that you want:
+apt-get install ubuntu-restricted-extras
+
+# Install language packs. Replace "-en" below with your own language(s):
+apt-get install language-pack-en language-pack-de
+apt-get install $(check-language-support)
+exit
