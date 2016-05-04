@@ -2,6 +2,9 @@
 
 # following the instruction on https://help.ubuntu.com/community/UbuntuLTSP/RaspberryPi
 
+# get the distribution name
+DIST=$(lsb_release -c | sed 's/.*Codename:[[:space:]]*//g;s/[[:space:]]*$//g;')
+
 cat <<EOF | tee /etc/ltsp/ltsp-build-client-raspi3.conf
 # This is a configuration file to build an LTSP chroot for Raspberry Pi 2.
 MOUNT_PACKAGE_DIR="/var/cache/apt/archives"
