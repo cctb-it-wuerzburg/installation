@@ -1,1 +1,0 @@
-../terminal_server/51_install_sphinx_via_pip.sh
