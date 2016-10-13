@@ -1,0 +1,1 @@
+../terminal_server/30_Skype.sh

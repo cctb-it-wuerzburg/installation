@@ -1,0 +1,1 @@
+../terminal_server/35_mendeley.sh

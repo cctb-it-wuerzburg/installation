@@ -1,0 +1,1 @@
+../terminal_server/03_install_required_packages.sh

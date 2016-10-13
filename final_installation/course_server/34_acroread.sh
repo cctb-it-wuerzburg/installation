@@ -1,0 +1,1 @@
+../terminal_server/34_acroread.sh

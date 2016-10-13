@@ -1,0 +1,1 @@
+../terminal_server/04_install_xubuntu-desktop.sh
