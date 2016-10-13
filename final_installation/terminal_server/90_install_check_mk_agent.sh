@@ -6,7 +6,7 @@ sudo apt-get install --assume-yes xinetd
 ## add the omd repository
 gpg --keyserver keys.gnupg.net --recv-keys F8C1CA08A57B9ED7
 gpg --armor --export F8C1CA08A57B9ED7 | sudo apt-key add -
-echo 'deb http://labs.consol.de/repo/stable/ubuntu trusty main' | sudo tee /etc/apt/sources.list.d/omd-stable.list
+echo 'deb http://labs.consol.de/repo/stable/ubuntu xenial main' | sudo tee /etc/apt/sources.list.d/omd-stable.list
 sudo apt-get update
 
 # create a directory in the temporary folder
