@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Add HP Management Component Pack Mirror
-echo "deb http://downloads.linux.hpe.com/SDR/downloads/MCP/ubuntu trusty/current non-free" | sudo tee /etc/apt/sources.list.d/hpmcp.sources.list
+echo "deb http://downloads.linux.hpe.com/SDR/downloads/MCP/ubuntu xenial non-free" | sudo tee /etc/apt/sources.list.d/hpmcp.sources.list
 
 wget -O - 'http://downloads.linux.hpe.com/SDR/repo/mcp/GPG-KEY-mcp' | sudo apt-key add -
 
