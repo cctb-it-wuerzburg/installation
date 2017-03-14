@@ -11,6 +11,9 @@
 #                      http://askubuntu.com/questions/16225/how-can-i-accept-the-microsoft-eula-agreement-for-ttf-mscorefonts-installer
 #
 
+# required for successful installation of mscorefonts
+sudo apt-get install --assume-yes apt-transport-https
+
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | \
     sudo debconf-set-selections
 echo ttf-mscorefonts-installer msttcorefonts/present-mscorefonts-eula note | \
