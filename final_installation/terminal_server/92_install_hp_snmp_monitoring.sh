@@ -7,7 +7,7 @@ wget -O - 'http://downloads.linux.hpe.com/SDR/repo/mcp/GPG-KEY-mcp' | sudo apt-k
 
 sudo apt-get update
 
-sudo apt-get install --assume-yes \
+sudo apt-get install --assume-yes --allow-unauthenticated \
     hp-health \
     hp-snmp-agents
 
