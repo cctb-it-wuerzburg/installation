@@ -13,6 +13,12 @@ ldap-auth-config    ldap-auth-config/ldapns/ldap-server    string    132.187.198
 ldap-auth-config    ldap-auth-config/ldapns/base-dn    string    dc=cctb,dc=uni-wuerzburg,dc=de
 ldap-auth-config    ldap-auth-config/binddn    string    cn=proxyuser,dc=example,dc=net
 ldap-auth-config    ldap-auth-config/rootbinddn    string    cn=admin,dc=cctb,dc=uni-wuerzburg,dc=de
-ldap-auth-config    ldap-auth-config/override    boolean    true " | sudo debconf-set-selection
+ldap-auth-config    ldap-auth-config/override    boolean    true" | sudo debconf-set-selections
 
 sudo apt install --assume-yes ldap-auth-config libpam-ldap nscd rpcbind libnss-ldap
+
+# change the nsswhich information for passwd group shadow and gshadow
+for i in passwd group shadow gshadow
+do
+    sed -i '/^'"$i"':/s/^\('"$i"':[[:space:]]*\).*$/\1compat ldap # added ldap by installation script/g' /etc/nsswitch.conf
+done
