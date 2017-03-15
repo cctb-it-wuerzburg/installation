@@ -402,7 +402,7 @@ su - ${KIOSKUSER} -c "XINITRC_DAEMON=${XINITRC_DAEMON} KIOSK_WM=${KIOSK_WM} xini
 if [ ! -z ${TMPDIR} ];
 then
     rm -rf ${TMPDIR}
-fi" | sudo tee /usr/share/ltsp/screen.d/x2go
+fi"
 EOF
     sudo chroot /opt/ltsp/${ltsp_arch} chmod +x /usr/share/ltsp/screen.d/x2go
     
