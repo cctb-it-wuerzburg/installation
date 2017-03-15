@@ -1,8 +1,9 @@
 #!/bin/bash
 
-echo "
-ldap-auth-config    ldap-auth-config/bindpw    password    
-ldap-auth-config    ldap-auth-config/rootbindpw    password    
+sudo apt install --assume-yes debconf-utils
+
+echo "ldap-auth-config    ldap-auth-config/bindpw    password    blub
+ldap-auth-config    ldap-auth-config/rootbindpw    password    bla
 ldap-auth-config    ldap-auth-config/ldapns/ldap_version    select    3
 ldap-auth-config    ldap-auth-config/move-to-debconf    boolean    true
 ldap-auth-config    ldap-auth-config/dblogin    boolean    false
