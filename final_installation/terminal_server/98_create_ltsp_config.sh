@@ -366,38 +366,11 @@ PATH=/bin:$PATH; export PATH
 [ -n "$1" ] && KIOSK_EXE=$1
 [ -n "$2" ] && KIOSK_OPTIONS=$2
 
-if [ -z "${KIOSK_EXE}" ]; then
-    if [ -x "/usr/bin/firefox" ]; then
-        KIOSK_EXE=/usr/bin/firefox
-    elif [ -x "/usr/bin/google-chrome" ]; then
-        KIOSK_EXE=/usr/bin/google-chrome
-    elif [ -x "/usr/bin/opera" ]; then
-        KIOSK_EXE=/usr/bin/opera
-    else
-        KIOSK_EXE=unknown
-    fi
-fi
- 
 if boolean_is_true "${KIOSK_DAEMON:-"False"}"; then
     export XINITRC_DAEMON="True"
 fi
 
-if [ -x /usr/share/ltsp/xinitrc ]; then
-    xinitrc=/usr/share/ltsp/xinitrc
-fi
-
-KIOSKUSER=${KIOSKUSER:-"ltspkiosk"}
-if [ -z "$(getent passwd ${KIOSKUSER})" ]; then
-    # create a ltspkiosk user
-    adduser --no-create-home --disabled-password --gecos ,,, ${KIOSKUSER}
-    # Create a tmpdir to be our homedir
-    TMPDIR=$(mktemp -d /tmp/.kiosk-XXXXXX)
-    chown ${KIOSKUSER} ${TMPDIR}
-    # Edit passwd homedir entry for programs that look it up from there
-    sed -i -e '\|'${KIOSKUSER}'|s|[^:]*\(:[^:]*\)$|'$TMPDIR'\1|' /etc/passwd
-fi
-
-su - ${KIOSKUSER} -c "XINITRC_DAEMON=${XINITRC_DAEMON} KIOSK_WM=${KIOSK_WM} xinit $xinitrc /usr/share/ltsp/kioskSession ${KIOSK_EXE} ${KIOSK_OPTIONS} -- ${DISPLAY} vt${TTY} ${X_ARGS} -br" >/dev/null
+su - ${KIOSKUSER} -c "XINITRC_DAEMON=${XINITRC_DAEMON} KIOSK_WM=${KIOSK_WM} xinit ${KIOSK_EXE} ${KIOSK_OPTIONS} -- ${DISPLAY} vt${TTY} ${X_ARGS} -br" >/dev/null
 
 if [ ! -z ${TMPDIR} ];
 then
