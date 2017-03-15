@@ -23,8 +23,9 @@ do
     sudo chroot /opt/ltsp/${ltsp_arch} useradd --comment "Genomics user" --home-dir /home2/genomics --create-home --shell /bin/bash --password '$6$wFb.dfXL3p5$MRmV2SA49DW/XIZJotdZuQ2rfeHy5/BPy4/x257pT1HR8sfz1VadxOKIjbtTqsfwUjbZhxV1b7YAKgv2ToYsA0' --groups sudo genomics
 
     # default x2gosession file
-    sudo mkdir -p /home2/genomics/.x2goclient
-    echo '[20120412164434850]
+    sudo chroot /opt/ltsp/${ltsp_arch} sudo mkdir -p /home2/genomics/.x2goclient
+    sudo chroot /opt/ltsp/${ltsp_arch} cat <<EOF  | sudo tee /home2/genomics/.x2goclient/sessions
+[20120412164434850]
 speed=4
 pack=16m-jpeg
 quality=9
@@ -323,7 +324,7 @@ sshproxysamepass=false
 sshproxysameuser=false
 sshproxyautologin=false
 sshproxykrblogin=false
-' | sudo tee /home2/genomics/.x2goclient/sessions
+EOF
     sudo chown -R genomics /home2/genomics/.x2goclient
     
     # install openssh-server to allow login into the nodes
