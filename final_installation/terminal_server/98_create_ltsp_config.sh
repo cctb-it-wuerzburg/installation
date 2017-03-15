@@ -327,8 +327,6 @@ sshproxykrblogin=false
 EOF
     
     sudo chroot /opt/ltsp/${ltsp_arch} chown -R genomics.genomics /home2/genomics/.x2goclient
-    sudo chroot /opt/ltsp/${ltsp_arch} cp -R /home2/genomics/.x2goclient /root/
-    sudo chroot /opt/ltsp/${ltsp_arch} chown -R root.root /root/.x2goclient
     
     # install openssh-server to allow login into the nodes
     # (taken from https://help.ubuntu.com/community/UbuntuLTSP/ClientTroubleshooting)
