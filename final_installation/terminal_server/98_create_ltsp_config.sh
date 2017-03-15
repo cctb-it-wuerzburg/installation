@@ -343,7 +343,8 @@ sshproxykrblogin=false
     sudo apt install --assume-yes x2goclient
 
     # prepare x2go
-    echo '#!/bin/sh
+    cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+#!/bin/sh
 #
 # The following script works for LTSP5.
 #
@@ -418,7 +419,8 @@ NETWORK_COMPRESSION=True
 
 # this is the important line to enable DHCP on the client machines
 NET_DEVICE_METHOD=dhcp
-' | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+
+EOF
 
     # move the created lts.conf to /opt/ltsp/${ltsp_arch}/etc/lts.conf
     if [ -e /opt/ltsp/${ltsp_arch}/etc/lts.conf ]
