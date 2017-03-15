@@ -325,6 +325,7 @@ sshproxysameuser=false
 sshproxyautologin=false
 sshproxykrblogin=false
 EOF
+    
     sudo chroot /opt/ltsp/${ltsp_arch} chown -R genomics /home2/genomics/.x2goclient
     
     # install openssh-server to allow login into the nodes
@@ -344,7 +345,7 @@ EOF
     sudo chroot /opt/ltsp/${ltsp_arch} apt install --assume-yes x2goclient
 
     # prepare x2go
-    cat <<"EOF" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+    cat <<"EOF" | sudo chroot /opt/ltsp/${ltsp_arch} tee /usr/share/ltsp/screen.d/x2go
 #!/bin/sh
 #
 # The following script works for LTSP5.
@@ -402,11 +403,12 @@ if [ ! -z ${TMPDIR} ];
 then
     rm -rf ${TMPDIR}
 fi" | sudo tee /usr/share/ltsp/screen.d/x2go
-
-    sudo chmod +x /usr/share/ltsp/screen.d/x2go
+EOF
+    sudo chroot /opt/ltsp/${ltsp_arch} chmod +x /usr/share/ltsp/screen.d/x2go
     
     # Set a lts.conf file to enable the correct SERVER and DHCP on the clients
-    echo "[Default]
+    cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+[Default]
 # For troubleshooting, the following open a local console with Alt+Ctrl+F2.
 #SCREEN_02=shell
 SCREEN_08=ldm
