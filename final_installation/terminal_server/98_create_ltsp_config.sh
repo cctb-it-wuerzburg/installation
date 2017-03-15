@@ -387,8 +387,8 @@ EOF
 SCREEN_07=ldm
 
 KIOSK_EXE="/usr/bin/x2goclient"
-KIOSK_OPTIONS="--session-conf=/root/.x2goclient/sessions --maximize --link=lan --geometry=fullscreen --thinclient --haltbt --add-to-known-hosts --xinerama --no-menu --home=/root/"
-KIOSKUSER=root
+KIOSK_OPTIONS="--session-conf=/home2/genomics/.x2goclient/sessions --maximize --link=lan --geometry=fullscreen --thinclient --haltbt --add-to-known-hosts --xinerama --no-menu --home=/home2/genomics/"
+KIOSKUSER=genomics
 SCREEN_08=x2go
 
 LDM_SYSLOG=True
