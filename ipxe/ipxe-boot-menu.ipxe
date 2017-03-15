@@ -1,16 +1,47 @@
 #!ipxe
+
+:start
 dhcp net0
-set next-server 132.187.198.12
 console --picture http://boot.ipxe.org/ipxe.png
+
 menu
-item x2go    Boot into X2GO
-item ltsp    Boot into LTSP
-choose --default x2go --timeout 3000 target || set target x2go
+item gaia1    Boot into Gaia 1
+item gaia2    Boot into Gaia 2
+item gaia3    Boot into Gaia 3
+item gaia4    Boot into Gaia 4
+item wbbi162    Boot into wbbi162
+choose --default gaia2 --timeout 3000 target || set target gaia2
 goto ${target}
-:ltsp
+
+:gaia1
+set next-server 132.187.198.11
 set filename /ltsp/amd64/pxelinux.0
-goto bootup
-:x2go
-set filename /ltsp/amd64_x2go/pxelinux.0
-:bootup
+goto bootnow
+
+:gaia2
+set next-server 132.187.198.12
+set filename /ltsp/amd64/pxelinux.0
+goto bootnow
+
+:gaia3
+set next-server 132.187.198.17
+set filename /ltsp/amd64/pxelinux.0
+goto bootnow
+
+:gaia4
+set next-server 132.187.198.18
+set filename /ltsp/amd64/pxelinux.0
+goto bootnow
+
+:wbbi162
+set next-server 132.187.22.162
+set filename /ltsp/amd64/pxelinux.0
+goto bootnow
+
+:bootnow
+imgload tftp://${next-server}${filename}
+imgstat
+sleep 3
 boot
+
+goto start
