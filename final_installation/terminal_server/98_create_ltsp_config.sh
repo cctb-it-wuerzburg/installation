@@ -407,7 +407,7 @@ EOF
     sudo chroot /opt/ltsp/${ltsp_arch} chmod a+x /usr/share/ltsp/screen.d/x2go
     
     # Set a lts.conf file to enable the correct SERVER and DHCP on the clients
-    cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+    cat <<"EOF" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
 [Default]
 # For troubleshooting, the following open a local console with Alt+Ctrl+F2.
 SCREEN_02=shell
@@ -417,14 +417,17 @@ KIOSK_EXE="/usr/bin/x2goclient --maximize --link=lan --geometry=fullscreen --thi
 KIOSKUSER=genomics
 
 LDM_SYSLOG=True
-SERVER=${IP_ADDRESS}
+SERVER=IP_ADDRESS
 NETWORK_COMPRESSION=True
 
 # this is the important line to enable DHCP on the client machines
 NET_DEVICE_METHOD=dhcp
 
 EOF
-
+    
+    # set the ip-address
+    sudo sed -i 's/IP_ADDRESS/'"$IP_ADDRESS"'/g' /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+    
     # move the created lts.conf to /opt/ltsp/${ltsp_arch}/etc/lts.conf
     if [ -e /opt/ltsp/${ltsp_arch}/etc/lts.conf ]
     then
