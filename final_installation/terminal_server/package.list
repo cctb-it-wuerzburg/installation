@@ -179,3 +179,6 @@ nodejs-legacy
 pandoc
 python-pip
 python-dev
+
+# central administration stuff
+nfs-common
