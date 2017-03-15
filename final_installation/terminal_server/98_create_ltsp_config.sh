@@ -24,7 +24,7 @@ do
 
     # default x2gosession file
     sudo chroot /opt/ltsp/${ltsp_arch} sudo mkdir -p /home2/genomics/.x2goclient
-    sudo chroot /opt/ltsp/${ltsp_arch} cat <<EOF  | sudo tee /home2/genomics/.x2goclient/sessions
+    sudo chroot /opt/ltsp/${ltsp_arch} cat <<"EOF"  | sudo tee /home2/genomics/.x2goclient/sessions
 [20120412164434850]
 speed=4
 pack=16m-jpeg
@@ -344,7 +344,7 @@ EOF
     sudo apt install --assume-yes x2goclient
 
     # prepare x2go
-    cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+    cat <<"EOF" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
 #!/bin/sh
 #
 # The following script works for LTSP5.
