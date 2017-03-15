@@ -412,10 +412,11 @@ EOF
     cat <<"EOF" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
 [Default]
 # For troubleshooting, the following open a local console with Alt+Ctrl+F2.
-SCREEN_02=shell
+#SCREEN_02=shell
 SCREEN_07=ldm
 
-KIOSK_EXE="/usr/bin/x2goclient --maximize --link=lan --geometry=fullscreen --thinclient --haltbt --add-to-known-hosts --xinerama --no-menu --home=/home2/genomics/"
+KIOSK_EXE="/usr/bin/x2goclient"
+KIOSK_OPTIONS="--session-conf=/root/.x2goclient/sessions --maximize --link=lan --geometry=fullscreen --thinclient --haltbt --add-to-known-hosts --xinerama --no-menu --home=/root/"
 KIOSKUSER=root
 SCREEN_08=x2go
 
