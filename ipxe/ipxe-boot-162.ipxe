@@ -1,0 +1,5 @@
+!ipxe
+dhcp net0
+set next-server 132.187.22.162
+set filename /ltsp/amd64/pxelinux.0
+boot
