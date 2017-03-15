@@ -1,0 +1,16 @@
+#!ipxe
+dhcp net0
+set next-server 132.187.198.12
+console --picture http://boot.ipxe.org/ipxe.png
+menu
+item x2go    Boot into X2GO
+item ltsp    Boot into LTSP
+choose --default x2go --timeout 3000 target || set target x2go
+goto ${target}
+:ltsp
+set filename /ltsp/amd64/pxelinux.0
+goto bootup
+:x2go
+set filename /ltsp/amd64_x2go/pxelinux.0
+:bootup
+boot
