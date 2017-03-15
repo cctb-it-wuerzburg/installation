@@ -23,7 +23,8 @@ do
     sudo chroot /opt/ltsp/${ltsp_arch} useradd --comment "Genomics user" --home-dir /home2/genomics --create-home --shell /bin/bash --password '$6$wFb.dfXL3p5$MRmV2SA49DW/XIZJotdZuQ2rfeHy5/BPy4/x257pT1HR8sfz1VadxOKIjbtTqsfwUjbZhxV1b7YAKgv2ToYsA0' --groups sudo genomics
 
     # default x2gosession file
-    echo "[20120412164434850]
+    sudo mkdir -p /home2/genomics/.x2goclient
+    echo '[20120412164434850]
 speed=4
 pack=16m-jpeg
 quality=9
@@ -322,7 +323,8 @@ sshproxysamepass=false
 sshproxysameuser=false
 sshproxyautologin=false
 sshproxykrblogin=false
-" | sudo tee /home2/genomics/.x2goclient/sessions
+' | sudo tee /home2/genomics/.x2goclient/sessions
+    sudo chown -R genomics /home2/genomics/.x2goclient
     
     # install openssh-server to allow login into the nodes
     # (taken from https://help.ubuntu.com/community/UbuntuLTSP/ClientTroubleshooting)
@@ -341,7 +343,7 @@ sshproxykrblogin=false
     sudo apt install --assume-yes x2goclient
 
     # prepare x2go
-    echo "#!/bin/sh
+    echo '#!/bin/sh
 #
 # The following script works for LTSP5.
 #
@@ -416,7 +418,7 @@ NETWORK_COMPRESSION=True
 
 # this is the important line to enable DHCP on the client machines
 NET_DEVICE_METHOD=dhcp
-" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
+' | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
 
     # move the created lts.conf to /opt/ltsp/${ltsp_arch}/etc/lts.conf
     if [ -e /opt/ltsp/${ltsp_arch}/etc/lts.conf ]
