@@ -325,7 +325,7 @@ sshproxysameuser=false
 sshproxyautologin=false
 sshproxykrblogin=false
 EOF
-    sudo chown -R genomics /home2/genomics/.x2goclient
+    sudo chroot /opt/ltsp/${ltsp_arch} chown -R genomics /home2/genomics/.x2goclient
     
     # install openssh-server to allow login into the nodes
     # (taken from https://help.ubuntu.com/community/UbuntuLTSP/ClientTroubleshooting)
@@ -341,7 +341,7 @@ EOF
     sudo chroot /opt/ltsp/${ltsp_arch} apt-get purge --assume-yes light-locker light-locker-settings
 
     # install x2goclient
-    sudo apt install --assume-yes x2goclient
+    sudo chroot /opt/ltsp/${ltsp_arch} apt install --assume-yes x2goclient
 
     # prepare x2go
     cat <<"EOF" | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
