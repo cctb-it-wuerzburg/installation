@@ -7,7 +7,7 @@
 # https://www.thefanclub.co.za/how-to/configure-update-auto-login-ubuntu-12-04-ltsp-fat-clients
 
 # get the current IP address
-IP_ADDRESS=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
+IP_ADDRESS=$(ip addr | sed -n '/^[0-9]*:.*state UP/{p;N;n;p}' | grep -vP "docker|inet6" | grep inet | sed 's/^.*inet \([0-9.]*\).*/\1/g')
 
 # create a set for the architectures: amd64, i386
 for ltsp_arch in i386 amd64
