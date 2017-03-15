@@ -402,15 +402,15 @@ su - ${KIOSKUSER} -c "XINITRC_DAEMON=${XINITRC_DAEMON} KIOSK_WM=${KIOSK_WM} xini
 if [ ! -z ${TMPDIR} ];
 then
     rm -rf ${TMPDIR}
-fi"
+fi
 EOF
-    sudo chroot /opt/ltsp/${ltsp_arch} chmod +x /usr/share/ltsp/screen.d/x2go
+    sudo chroot /opt/ltsp/${ltsp_arch} chmod a+x /usr/share/ltsp/screen.d/x2go
     
     # Set a lts.conf file to enable the correct SERVER and DHCP on the clients
     cat <<EOF | sudo tee /var/lib/tftpboot/ltsp/${ltsp_arch}/lts.conf
 [Default]
 # For troubleshooting, the following open a local console with Alt+Ctrl+F2.
-#SCREEN_02=shell
+SCREEN_02=shell
 SCREEN_08=ldm
 SCREEN_07=x2go
 KIOSK_EXE="/usr/bin/x2goclient --maximize --link=lan --geometry=fullscreen --thinclient --haltbt --add-to-known-hosts --xinerama --no-menu --home=/home2/genomics/"
