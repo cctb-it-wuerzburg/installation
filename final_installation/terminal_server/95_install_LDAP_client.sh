@@ -22,3 +22,6 @@ for i in passwd group shadow gshadow
 do
     sed -i '/^'"$i"':/s/^\('"$i"':[[:space:]]*\).*$/\1compat ldap # added ldap by installation script/g' /etc/nsswitch.conf
 done
+
+echo "Replace password for LDAP root, please close with Ctrl-D"
+cat | sudo tee /etc/ldap.secret
