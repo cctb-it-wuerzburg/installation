@@ -1,7 +1,9 @@
+#!/bin/bash
+
 zpool create \
         -o autoexpand=on \
         -o ashift=12 \
-        - O compression=lz4 \
+        -O compression=lz4 \
         tank \
         raidz2 \
                 /dev/disk/by-id/ata-HGST_HDS724040ALE640_PK2331PAHP44HT \
