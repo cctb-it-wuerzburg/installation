@@ -18,7 +18,7 @@ zpool create \
         raidz2 \
                 /dev/disk/by-id/ata-HGST_HDS724040ALE640_PK2331PAHPR8ST \
                 /dev/disk/by-id/ata-Hitachi_HDS724040ALE640_PK2331PAGR09YT \
-                /dev/disk/by-id/ata-HGT_HDS724040ALE640_PK2331PAHP23LT \
+                /dev/disk/by-id/ata-HGST_HDS724040ALE640_PK2331PAHP23LT \
                 /dev/disk/by-id/ata-HGST_HDS724040ALE640_PK1331PAHPMX7S \
         raidz2 \
                 /dev/disk/by-id/ata-HGST_HDS724040ALE640_PK1331PAHNTY9S \
