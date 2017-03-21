@@ -74,3 +74,45 @@ OLDUID=$(ls -ld --numeric-uid-gid /wbbi120/home/s229502/ | grep -v total | awk '
 
 sudo rsync -avP /wbbi120/home/s229502_cctb/ /new_home/s229502
 sudo rsync -avP --usermap="$OLDUID":"$NEWUID" /wbbi120/home/s229502/ /new_home/s229502/home_from_bioinf
+
+# move ngsgrid homes
+GRIDHOMES=$(cat<<'EOF' | sed '/^$/d'
+/ngsgrid_home/alk50uw
+/ngsgrid_home/ark06eu
+/ngsgrid_home/binf009
+/ngsgrid_home/frf53jh
+/ngsgrid_home/jaf81qa
+/ngsgrid_home/phk57mf
+/ngsgrid_home/s187512
+/ngsgrid_home/s194335
+/ngsgrid_home/s195052
+/ngsgrid_home/s211854
+/ngsgrid_home/s211910
+/ngsgrid_home/s216017
+/ngsgrid_home/s216115
+/ngsgrid_home/s216121
+/ngsgrid_home/s216849
+/ngsgrid_home/s217942
+/ngsgrid_home/s228165
+/ngsgrid_home/s228711
+/ngsgrid_home/s229502
+/ngsgrid_home/s231779
+/ngsgrid_home/s319932
+/ngsgrid_home/s320561
+/ngsgrid_home/s321065
+/ngsgrid_home/top40ub
+EOF
+)
+
+for i in $GRIDHOMES;
+do
+    TO=/new_home/$(basename "$i")
+    # get the new UID
+    NEWUID=$(ls -ld --numeric-uid-gid "$TO" | grep -v total | awk '{print $3}')
+    # get the old UID
+    OLDUID=$(ls -ld --numeric-uid-gid "$i" | grep -v total | awk '{print $3}')
+
+    sudo rsync -avP --usermap="$OLDUID":"$NEWUID" "$i"/ "$TO"/ngsgrid_home
+done
+
+
