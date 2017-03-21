@@ -63,7 +63,7 @@ EOF
 for i in $OLDHOMES;
 do
     TO=/new_home/$(basename "$i")
-    sudo rsync -avP "$i"/ "$TO"
+    sudo rsync -avP --delete "$i"/ "$TO"
 done
 
 # special case merge two home folders
@@ -72,8 +72,8 @@ NEWUID=$(ls -ld --numeric-uid-gid /wbbi120/home/s229502_cctb/ | grep -v total | 
 # get the old UID
 OLDUID=$(ls -ld --numeric-uid-gid /wbbi120/home/s229502/ | grep -v total | awk '{print $3}')
 
-sudo rsync -avP /wbbi120/home/s229502_cctb/ /new_home/s229502
-sudo rsync -avP --usermap="$OLDUID":"$NEWUID" /wbbi120/home/s229502/ /new_home/s229502/home_from_bioinf
+sudo rsync -avP --delete /wbbi120/home/s229502_cctb/ /new_home/s229502
+sudo rsync -avP --delete --usermap="$OLDUID":"$NEWUID" /wbbi120/home/s229502/ /new_home/s229502/home_from_bioinf
 
 # move ngsgrid homes
 GRIDHOMES=$(cat<<'EOF' | sed '/^$/d'
@@ -112,7 +112,7 @@ do
     # get the old UID
     OLDUID=$(ls -ld --numeric-uid-gid "$i" | grep -v total | awk '{print $3}')
 
-    sudo rsync -avP --usermap="$OLDUID":"$NEWUID" "$i"/ "$TO"/ngsgrid_home
+    sudo rsync -avP --delete --usermap="$OLDUID":"$NEWUID" "$i"/ "$TO"/ngsgrid_home
 done
 
 
