@@ -5,10 +5,10 @@ dhcp net0
 console --picture http://boot.ipxe.org/ipxe.png
 
 menu
-item gaia1    Boot into Gaia 1
-item gaia2    Boot into Gaia 2
-item gaia3    Boot into Gaia 3
-item gaia4    Boot into Gaia 4
+item gaia1    Retrieve boot image from Gaia 1
+item gaia2    Retrieve boot image from Gaia 2
+item gaia3    Retrieve boot image from Gaia 3
+item gaia4    Retrieve boot image from Gaia 4
 choose --default gaia2 --timeout 3000 target || set target gaia2
 goto ${target}
 
