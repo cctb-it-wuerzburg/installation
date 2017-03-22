@@ -112,7 +112,12 @@ do
     # get the old UID
     OLDUID=$(ls -ld --numeric-uid-gid "$i" | grep -v total | awk '{print $3}')
 
-    sudo rsync -avP --delete --usermap="$OLDUID":"$NEWUID" "$i"/ "$TO"/ngsgrid_home
+    # get the new GID
+    NEWGID=$(ls -ld --numeric-uid-gid "$TO" | grep -v total | awk '{print $4}')
+    # get the old GID
+    OLDGID=$(ls -ld --numeric-uid-gid "$i" | grep -v total | awk '{print $4}')
+
+    sudo rsync -avP --delete --usermap="$OLDUID":"$NEWUID" --groupmap="$OLDGID":"$NEWGID" "$i"/ "$TO"/ngsgrid_home
 done
 
 
