@@ -120,4 +120,7 @@ do
     sudo rsync -avP --delete --usermap="$OLDUID":"$NEWUID" --groupmap="$OLDGID":"$NEWGID" "$i"/ "$TO"/ngsgrid_home
 done
 
+# transfer storage
+sudo rsync -avP --delete /wbbi120/storage/ark06eu/ /tank/evolutionarygenomics/storage
+sudo rsync -avP --delete /wbbi120/storage/phk57mf/ /tank/computationalimageanalysis/storage
 
