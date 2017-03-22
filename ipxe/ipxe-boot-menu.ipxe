@@ -9,7 +9,6 @@ item gaia1    Boot into Gaia 1
 item gaia2    Boot into Gaia 2
 item gaia3    Boot into Gaia 3
 item gaia4    Boot into Gaia 4
-item wbbi162    Boot into wbbi162
 choose --default gaia2 --timeout 3000 target || set target gaia2
 goto ${target}
 
@@ -30,11 +29,6 @@ goto bootnow
 
 :gaia4
 set next-server 132.187.198.18
-set filename /ltsp/amd64/pxelinux.0
-goto bootnow
-
-:wbbi162
-set next-server 132.187.22.162
 set filename /ltsp/amd64/pxelinux.0
 goto bootnow
 
