@@ -61,6 +61,7 @@ aspell-de-alt
 
 ## Tools
 screen
+tmux
 pigz
 pbzip2
 finger
