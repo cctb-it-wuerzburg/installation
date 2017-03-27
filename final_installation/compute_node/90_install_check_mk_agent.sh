@@ -1,0 +1,1 @@
+../terminal_server/90_install_check_mk_agent.sh
