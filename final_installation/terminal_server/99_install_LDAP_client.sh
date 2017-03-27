@@ -25,3 +25,5 @@ done
 
 echo "Replace password for LDAP root, please close with Ctrl-D"
 cat | sudo tee /etc/ldap.secret
+
+sudo service nscd restart
