@@ -4,24 +4,6 @@ tcsh
 zsh
 
 
-## TeX
-texlive-full
-texmaker
-jabref
-
-## Libreoffice
-libreoffice
-openclipart-libreoffice
-unixodbc
-libreoffice-lightproof-en
-mythes-de
-mythes-en-us
-hyphen-de
-myspell-en-us
-myspell-en-gb
-myspell-de-de
-myspell-uk
-
 ## clusterssh/ssh
 openssh-server
 clusterssh
@@ -70,6 +52,7 @@ rdesktop
 tree
 htop
 tofrodos
+tmux
 
 ## for maintaining of the passwords
 seahorse
@@ -85,30 +68,13 @@ bowtie
 bowtie2
 raxml
 
-## Lua development needed for clann
-liblua5.1-0-dev
-liblua5.2-0
-liblua50
-lua5.1
-
 ## Time
 ntp
-
-## Graphics
-inkscape
-create-resources
-imagemagick
-gimp
-gimp-help-de
-gimp-help-en
-gimp-lensfun
-gimp-normalmap
-gimp-data-extras
-posterazor
 
 ## git
 git
 gitk
+gitg
 git-svn
 
 ## diff-tool
@@ -156,12 +122,6 @@ libtest-strict-perl
 ## Databases
 postgresql-client
 pgadmin3
-
-## GNU R packages
-r-cran-ggplot2
-
-## Requested by Clemens Weiß
-libcurl4-openssl-dev
 
 ## GnuPG 2 and its recommendations
 gnupg2
