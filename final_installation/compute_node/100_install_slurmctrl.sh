@@ -35,8 +35,6 @@ sudo apt install --assume-yes munge mailutils
 
 sudo create-munge-key -f
 
-sudo base64 /etc/munge/munge.key
-
 sudo service munge stop
 sudo service munge start
 
@@ -528,6 +526,8 @@ esac
 EOF
 
 # printing important information
+MUNGE_KEY=$(sudo base64 /etc/munge/munge.key)
+
 cat <<EOF
 
 
@@ -541,6 +541,9 @@ MySQL user for slurmctrl  : '$DB_USER'
 Password for that user    : '$PW_slurm'
 Database for accounting   : '$DB_ACCOUNTING'
 Database for jobcompletion: '$DB_JOBCOMPLETION'
+
+Munge key '/etc/munge/munge.key' 64base encoded:
+$MUNGE_KEY
 
 
 EOF
