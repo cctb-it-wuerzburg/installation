@@ -223,8 +223,8 @@ EOF
 
 sudo ln -s /etc/slurm-llnl/slurm.conf /usr/local/etc/slurm.conf
 
-echo "slurm:x:2000:2000:slurm admin:/home/slurm:/bin/bash" | sudo tee /etc/passwd
-echo "slurm:x:2000:slurm" | sudo tee /etc/group
+echo "slurm:x:2000:2000:slurm admin:/home/slurm:/bin/bash" | sudo tee --append /etc/passwd
+echo "slurm:x:2000:slurm" | sudo tee --append /etc/groups
 pwconv
 
 sudo mkdir /var/spool/slurm
