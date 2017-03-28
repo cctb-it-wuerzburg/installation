@@ -9,23 +9,12 @@ sudo apt install --assume-yes pwgen
 
 PW=$(pwgen --capitalize --numerals --secure --no-vowels 24 1)
 
-# want to know which Ubuntu release
-. /etc/lsb-release
-
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
-cat <<EOF | sudo tee /etc/apt/sources.list.d/mysql.list
-deb http://repo.mysql.com/apt/ubuntu $DISTRIB_CODENAME mysql-5.7
-EOF
-
-sudo apt update
-
 echo "
-mysql-community-server mysql-community-server/root-pass password $PW
-mysql-community-server mysql-community-server/re-root-pass password $PW
+mysql-server-5.7 mysql-server/root_password password $PW
+mysql-server-5.7 mysql-server/root_password_again password $PW
 " | sudo debconf-set-selections
 
-sudo apt install --assume-yes mysql-server
-
+sudo apt install --assume-yes mysql-server-5.7
 sudo service mysql start
 
 DB_USER="slurm"
