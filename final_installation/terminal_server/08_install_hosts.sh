@@ -29,7 +29,7 @@ then
     exit 1
 fi
 
-echo "$HOSTS_CONTENT" | sudo tee /etc/hosts
+echo "$HOSTS_CONTENT" | sudo tee --append /etc/hosts
 
 sudo sed -i 's/\(127.0.0.1.*\)/\1 '$OWN_HOSTNAME'/' /etc/hosts
 sudo hostnamectl set-hostname "$OWN_HOSTNAME"
