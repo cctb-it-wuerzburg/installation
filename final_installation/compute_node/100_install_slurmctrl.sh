@@ -42,6 +42,7 @@ sudo service munge start
 
 sudo apt install --assume-yes build-essential gcc bison make flex libncurses5-dev tcsh pkg-config blcr-util blcr-testsuite libcr-dbg libcr-dev libcr0
 sudo apt install --assume-yes checkinstall wget tar bzip2
+sudo apt install --assume-yes python
 
 cd /tmp/
 wget -O slurm.tar.bz2 https://www.schedmd.com/downloads/latest/slurm-16.05.10-2.tar.bz2
