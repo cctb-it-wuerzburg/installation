@@ -207,4 +207,4 @@ NodeName=neptun1 CPUs=24 RealMemory=190000 Sockets=2 CoresPerSocket=6 ThreadsPer
 PartitionName=default Nodes=saturn1,saturn2,jupiter,neptun1,uranus[1-3] Default=YES MaxTime=INFINITE State=UP
 EOF
 
-sudo service start slurmctr
+sudo service start slurmctld
