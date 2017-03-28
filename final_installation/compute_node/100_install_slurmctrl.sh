@@ -31,7 +31,7 @@ do
     sudo mysql --password="$PW" --execute="grant all on "$i".* TO '$DB_USER'@'localhost';"
 done
 
-sudo apt install --assume-yes munge mailutils
+sudo apt install --assume-yes munge libmunge-dev libmunge2 man2html liblz4-dev mailutils
 
 sudo create-munge-key -f
 
