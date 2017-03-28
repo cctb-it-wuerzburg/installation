@@ -45,7 +45,7 @@ cat <<EOF | sudo tee /etc/slurm-llnl/slurm.conf
 # Put this file on all nodes of your cluster.
 # See the slurm.conf man page for more information.
 #
-ControlMachine=venus1
+ControlMachine=$HOSTNAME
 #ControlAddr=
 #BackupController=
 #BackupAddr=
