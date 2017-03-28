@@ -527,6 +527,7 @@ case "$1" in
 esac
 EOF
 
+# printing important information
 cat <<EOF
 
 
