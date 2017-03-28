@@ -7,29 +7,29 @@ sudo chmod g-w /var/log
 sudo apt update
 sudo apt install --assume-yes pwgen
 
-PW=$(pwgen --capitalize --numerals --secure --no-vowels 24 1)
-
-echo "
-mysql-server-5.7 mysql-server/root_password password $PW
-mysql-server-5.7 mysql-server/root_password_again password $PW
-" | sudo debconf-set-selections
-
-sudo apt install --assume-yes mysql-server libmysqlclient-dev libmysqld-dev
-sudo service mysql start
+MYSQL_ROOT_PW=$(pwgen --capitalize --numerals --secure --no-vowels 24 1)
 
 DB_USER="slurm"
-DB_ACCOUNTING="cctbhpc_accounting"
-DB_JOBCOMPLETION="cctbhpc_jobcompletion"
+DB_ACCOUNTING="slurmaccounting"
+DB_JOBCOMPLETION="slurmjobcompletion"
 
 # create user and database entries for slurm + grant privilegeues
-PW_slurm=$(pwgen --capitalize --numerals --secure --no-vowels 12 1)
-sudo mysql --password="$PW" --execute="create user '$DB_USER'@'localhost' identified by '$PW_slurm';"
+DB_USER_PW=$(pwgen --capitalize --numerals --secure --no-vowels 12 1)
 
-for i in "$DB_ACCOUNTING" "$DB_JOBCOMPLETION"
-do
-    sudo mysql --password="$PW" --execute="create database $i;"
-    sudo mysql --password="$PW" --execute="grant all on "$i".* TO '$DB_USER'@'localhost';"
-done
+
+DB_CONTAINER_NAME=slurm-mysql
+DB_DIR=/srv/mysql/"$DB_CONTAINER_NAME"
+
+sudo mkdir -p "$DB_DIR"
+
+sudo docker run --name "$DB_CONTAINER_NAME" --publish 3306:3306 -e MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PW" \
+     -e MYSQL_DATABASE="$DB_ACCOUNTING" -e MYSQL_USER="$DB_USER" -e MYSQL_PASSWORD="$DB_USER_PW" \
+     -v "$DB_DIR":/var/lib/mysql -d mysql:5.6 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+sleep 60
+
+sudo docker exec -it slurm-mysql mysql --password="$MYSQL_ROOT_PW" \
+     --execute 'CREATE DATABASE '"$DB_JOBCOMPLETION"'; GRANT ALL PRIVILEGES ON '"$DB_JOBCOMPLETION"'.* TO '"'$DB_USERW'@'localhost'"' WITH GRANT OPTION; FLUSH PRIVILEGES;'
 
 sudo apt install --assume-yes munge libmunge-dev libmunge2 man2html liblz4-dev mailutils
 
