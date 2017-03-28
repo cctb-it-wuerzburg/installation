@@ -47,6 +47,11 @@ wget -O slurm.tar.bz2 https://www.schedmd.com/downloads/latest/slurm-16.05.10-2.
 tar xjf slurm.tar.bz2
 cd /tmp/slurm-16.05.10-2
 
+# cd /tmp/
+# wget -O slurm.tar.bz2 https://www.schedmd.com/downloads/latest/slurm-17.02.1-2.tar.bz2
+# tar xjf slurm.tar.bz2
+# cd /tmp/slurm-17.02.1-2
+
 ./configure --enable-multiple-slurmd
 make
 checkinstall --install=yes --default
