@@ -51,6 +51,7 @@ cd slurm-16.05.10-2
 
 ./configure --enable-multiple-slurmd
 make
+checkinstall --install=yes
 
 mkdir -p /etc/slurm-llnl
 cat <<EOF | sudo tee /etc/slurm-llnl/slurm.conf
