@@ -523,7 +523,7 @@ case "$1" in
         done
         ;;
     *)
-        echo "Usage: $0 {start|startclean|stop|status|restart|reconfig|condrestart|tes$
+        echo "Usage: $0 {start|startclean|stop|status|restart|reconfig|condrestart|test}"
         exit 1
         ;;
 esac
