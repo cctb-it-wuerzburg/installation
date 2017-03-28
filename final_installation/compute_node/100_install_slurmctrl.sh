@@ -220,19 +220,23 @@ PartitionName=default Nodes=saturn1,saturn2,jupiter,neptun1,uranus[1-3] Default=
 EOF
 
 sudo ln -s /etc/slurm-llnl/slurm.conf /usr/local/etc/slurm.conf
-
-echo "slurm:x:2000:2000:slurm admin:/home/slurm:/bin/bash" | sudo tee --append /etc/passwd
-echo "slurm:x:2000:slurm" | sudo tee --append /etc/groups
+SLURM_UID=2000
+SLURM_GID=2000
+echo "slurm:x:$SLURM_UID:$SLURM_GID:slurm admin:/home2/slurm:/bin/bash" | sudo tee --append /etc/passwd
+echo "slurm:x:$SLURM_GID:slurm" | sudo tee --append /etc/group
 pwconv
 
+sudo mkdir -p /home2/slurm
+chown $SLURM_UID.$SLURM_GID /home2/slurm
+
 sudo mkdir /var/spool/slurm
-sudo chown -R slurm:slurm /var/spool/slurm
+sudo chown -R $SLURM_UID.$SLURM_GID /var/spool/slurm
 sudo mkdir /var/log/slurm
-sudo chown -R slurm:slurm /var/log/slurm
+sudo chown -R $SLURM_UID.$SLURM_GID /var/log/slurm
 
 sudo touch /etc/init.d/slurmctl
 sudo touch /etc/init.d/slurmdbd
-sudo chmod +x /etc/init.d/slurm
+sudo chmod +x /etc/init.d/slurmctl
 sudo chmod +x /etc/init.d/slurmdbd
 
 cat <<"EOF" | tee /etc/init.d/slurmctl
