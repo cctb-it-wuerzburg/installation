@@ -7,7 +7,7 @@ HOSTS_CONTENT=$(cat <<EOF
 132.187.198.13 saturn1
 132.187.198.14 saturn2
 132.187.198.15 jupiter
-132.187.198.16 venus1
+132.187.198.16 venus1 slurmmaster
 132.187.198.17 gaia3
 132.187.198.18 gaia4
 132.187.198.19 venus2
