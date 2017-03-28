@@ -45,7 +45,7 @@ sudo apt install --assume-yes python
 cd /tmp/
 wget -O slurm.tar.bz2 https://www.schedmd.com/downloads/latest/slurm-16.05.10-2.tar.bz2
 tar xjf slurm.tar.bz2
-cd slurm-16.05.10-2
+cd /tmp/slurm-16.05.10-2
 
 ./configure --enable-multiple-slurmd
 make
