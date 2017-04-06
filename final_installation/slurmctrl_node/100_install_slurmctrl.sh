@@ -151,8 +151,8 @@ FastSchedule=1
 #MaxMemPerCPU=0
 #SchedulerTimeSlice=30
 SchedulerType=sched/backfill
-SelectType=select/linear
-#SelectTypeParameters=
+SelectType=select/cons_res
+SelectTypeParameters=CR_Core_Memory
 #
 #
 # JOB PRIORITY
@@ -171,11 +171,11 @@ SelectType=select/linear
 #
 #
 # LOGGING AND ACCOUNTING
-#AccountingStorageEnforce=0
+#AccountingStorageEnforce=safe
 AccountingStorageHost=127.0.0.1
 AccountingStorageLoc=$DB_ACCOUNTING
 AccountingStoragePass=$DB_USER_PW
-#AccountingStoragePort=
+#AccountingStoragePort=6819
 AccountingStorageType=accounting_storage/slurmdbd
 AccountingStorageUser=$DB_USER
 AccountingStoreJobComment=YES
@@ -191,11 +191,11 @@ JobCompUser=$DB_USER
 JobAcctGatherFrequency=30
 JobAcctGatherType=jobacct_gather/linux
 SlurmctldDebug=3
-#SlurmctldLogFile=
+SlurmctldLogFile=/var/log/slurm-llnl/slurmctld.log
 SlurmdDebug=3
-#SlurmdLogFile=
-#SlurmSchedLogFile=
-#SlurmSchedLogLevel=
+SlurmdLogFile=/var/log/slurm-llnl/slurmd.log
+SlurmSchedLogFile=/var/log/slurm-llnl/slurmshed.log
+SlurmSchedLogLevel=3
 #
 #
 # POWER SAVE SUPPORT FOR IDLE NODES (optional)
