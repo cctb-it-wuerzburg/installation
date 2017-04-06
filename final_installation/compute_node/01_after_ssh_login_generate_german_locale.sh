@@ -1,0 +1,1 @@
+../terminal_server/01_after_ssh_login_generate_german_locale.sh

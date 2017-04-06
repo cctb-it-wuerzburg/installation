@@ -1,0 +1,1 @@
+../terminal_server/10_install_base_packages.sh
