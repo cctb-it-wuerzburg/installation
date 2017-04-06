@@ -34,6 +34,12 @@ sudo docker exec -it slurm-mysql mysql --password="$MYSQL_ROOT_PW" \
                 GRANT ALL PRIVILEGES ON '"$DB_JOBCOMPLETION"'.* TO '"'$DB_USER'@'%'"' WITH GRANT OPTION;
                 FLUSH PRIVILEGES;'
 
+sudo docker exec -it slurm-mysql mysql --password="$MYSQL_ROOT_PW" \
+     --execute 'CREATE DATABASE '"$DB_JOBCOMPLETION"';
+                GRANT ALL PRIVILEGES ON '"$DB_ACCOUNTING"'.* TO '"'$DB_USER'@'localhost'"' WITH GRANT OPTION;
+                GRANT ALL PRIVILEGES ON '"$DB_ACCOUNTING"'.* TO '"'$DB_USER'@'%'"' WITH GRANT OPTION;
+                FLUSH PRIVILEGES;'
+
 sudo apt install --assume-yes munge mailutils
 
 sudo apt install --assume-yes slurmdbd slurm-llnl
