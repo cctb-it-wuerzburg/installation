@@ -1,0 +1,1 @@
+../terminal_server/40_update_everything.sh
