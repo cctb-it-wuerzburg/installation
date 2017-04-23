@@ -23,7 +23,8 @@ do
     sed -i '/^'"$i"':/s/^\('"$i"':[[:space:]]*\).*$/\1compat ldap # added ldap by installation script/g' /etc/nsswitch.conf
 done
 
-echo "Replace password for LDAP root, please close with Ctrl-D"
+echo "Replace password for LDAP root, please enter password, followed by <ENTER> and afterwards close with <Ctrl-D>"
 cat | sudo tee /etc/ldap.secret
+sudo chmod 600 /etc/ldap.secret
 
 sudo service nscd restart
