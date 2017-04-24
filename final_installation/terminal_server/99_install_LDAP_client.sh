@@ -23,6 +23,9 @@ do
     sed -i '/^'"$i"':/s/^\('"$i"':[[:space:]]*\).*$/\1compat ldap # added ldap by installation script/g' /etc/nsswitch.conf
 done
 
+# enabe password change via passwd
+sudo sed -i 's/use_authtok[[:space:]]*//' /etc/pam.d/common-password
+
 echo "Replace password for LDAP root, please enter password, followed by <ENTER> and afterwards close with <Ctrl-D>"
 cat | sudo tee /etc/ldap.secret
 sudo chmod 600 /etc/ldap.secret
