@@ -20,7 +20,7 @@ sudo chown slurm.slurm /etc/slurm-llnl/slurm.conf
 
 SERVICE2CHECK="munge.service"
 
-systemctl cat "$SERVICE2CHECK" | grep "ExecStart.*--syslog|ExecStart.*--force" >/dev/null
+systemctl cat "$SERVICE2CHECK" | grep -P "ExecStart.*--syslog|ExecStart.*--force" >/dev/null
 
 PRESENT_OR_NOT=$?
 
