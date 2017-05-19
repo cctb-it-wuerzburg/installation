@@ -28,3 +28,7 @@ zfsutils-linux
 zfsnap
 nfs-kernel-server
 samba-common-bin
+
+## lsscsi plus sg-utils
+lsscsi
+sg3-utils
